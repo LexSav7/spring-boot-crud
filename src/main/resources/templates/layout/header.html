@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+              href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+              rel="stylesheet" media="screen" />
+        <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+    </head>
+    <body>
+
+        <div class="container" th:action="@{/books/search}" method="get">
+            <div th:fragment="header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+                            <ul class="nav navbar-nav">
+                                <li><a th:href="@{/books}">Books List</a></li>
+                                <li><a th:href="@{/books/add}">Create Book</a></li>
+                            </ul>
+                        </div>
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input th:name="search" type="text" class="form-control" placeholder="Search by title">
+                            </div>
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+
+                <div class="jumbotron">
+                    <div class="row text-center">
+                        <div class="row">
+                            <h2>Spring MVC Book Manager</h2>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <img src="../../static/images/spring.png" width="30%" th:src="@{/images/spring.png}" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

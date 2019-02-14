@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Books List</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${#lists.isEmpty(books)}">
+            <div class="text text-center">
+                <h2>
+                    There are no books yet.<br>You can add a new one
+                    <a th:href="@{/books/add}">here</a>.
+                </h2>
+            </div>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(books)}">
+            <h2>List Of Books</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>№</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Year</th>
+                    <th>Finished</th>
+                    <th>Read</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr th:each="book, iterator : ${books}">
+                    <td th:text="${iterator.index + 1}">Id</td>
+                    <td th:text="${book.title}">Title</td>
+                    <td th:text="${book.description}">Description</td>
+                    <td th:text="${book.author}">Author</td>
+                    <td th:text="${book.isbn}">ISBN</td>
+                    <td th:text="${book.year}">Year</td>
+                    <td th:text="${book.finished} ? 'Yes' : 'No'">Finished</td>
+                    <td><a th:href="${'books/read/' + book.id}" class="btn btn-success">Read</a></td>
+                    <td><a th:href="${'books/edit/' + book.id}" class="btn btn-info">Edit</a></td>
+                    <td><a th:href="${'books/delete/' + book.id}" class="btn btn-danger">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
